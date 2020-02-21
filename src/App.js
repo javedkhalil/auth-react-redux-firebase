@@ -8,7 +8,7 @@ import Home from './components/Home';
 import Account from './components/Account';
 import Dashboard from './components/Dashboard';
 
-function App({ isAuth, __logOut, __persistState }) {
+function App({ isAuth, __logOut, __persistState, loader }) {
   
   useEffect(() => {
     checkAuthTimeOut();
@@ -46,7 +46,7 @@ function App({ isAuth, __logOut, __persistState }) {
             </div>
           </div>
         </div>
-        
+        { loader ? <p className="loading dot-falling">loading...</p> : null }
         <Switch>
           <Route exact path="/">
             <Home

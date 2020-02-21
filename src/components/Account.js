@@ -4,7 +4,7 @@ import { processLogin, processSignUp } from "../store/auth/authActions";
 import { Redirect } from 'react-router-dom';
 import * as types from '../store/auth/authActionTypes';
 
-function Account({ isAuth, __login, __signup, msgSuccess, msgError, __msgError, __msgSuccess  }) {
+function Account({ isAuth, __login, __signup, msgSuccess, msgError, __msgError, __msgSuccess, loader }) {
   const [ form, setForm ] = useState('login');
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
@@ -56,6 +56,7 @@ function Account({ isAuth, __login, __signup, msgSuccess, msgError, __msgError, 
     <div className="page-wrap">
       { isAuth ? <Redirect to="/" /> : null }
       <h4>Login or Create Account</h4>
+        { loader ? <p className="loading dot-falling">loading...</p> : null }
         <form onSubmit={ handleSubmit }>
           <div className="account">
             { msgError ? <div className="error">{ msgError }</div> : null }

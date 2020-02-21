@@ -2,12 +2,12 @@ import * as types from "./authActionTypes";
 
 const initialState = {
   isAuthenticated: false,
+  loading: false,
   token: '',
   userID: '',
   userEmail: '',
   expirySeconds: '',
   expiryDateTime: '',
-  loading: false,
   msgSuccess: '',
   msgError: ''
 };
@@ -38,7 +38,7 @@ const authReducer = (state = initialState, action) => {
     case types.RELOGIN:
       return {
         ...state,
-        // loading: true,
+        loading: true,
         isAuthenticated: action.payload.isAuthenticated,
         token: action.payload.token,
         userID: action.payload.userID,
@@ -51,7 +51,7 @@ const authReducer = (state = initialState, action) => {
     case types.LOGOUT:
       return {
         ...state,
-        // loading: true,
+        loading: true,
         isAuthenticated: action.payload.authenticated,
         token: action.payload.token,
         userID: action.payload.userID,

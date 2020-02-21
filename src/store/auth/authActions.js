@@ -24,6 +24,7 @@ export const processSignUp = (email, password) => {
             msgError: ''
           }
         })
+        dispatch({ type: types.LOADED })
 
       })
       .catch(error => {
@@ -68,6 +69,9 @@ export const processLogin = (email, password) => {
             expiryDateTime: expirationDateTime
           }
         })
+        setTimeout(() => {
+          dispatch({ type: types.LOADED })
+        }, 1000)
         
         // fill up local storage
         
@@ -115,6 +119,9 @@ export const processLogOut = () => {
         msgError: '',
       }
     })
+    setTimeout(() => {
+      dispatch({ type: types.LOADED })
+    }, 1000)
   }
 
 }
@@ -132,5 +139,8 @@ export const relogin = () => {
         expiryDateTime: localStorage.expiryDateTime
       }
     })
+    setTimeout(() => {
+      dispatch({ type: types.LOADED })
+    }, 1000)
   }
 }
